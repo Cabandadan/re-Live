@@ -1,9 +1,9 @@
 var App = angular.module('ChatRoom',['ngResource','ngRoute','ngStorage','socket.io','ngFileUpload','Controllers','Services'])
 .run(["$rootScope", function ($rootScope){
-	$rootScope.baseUrl = 'http://chat.systenics.com'; //Application URL
+	$rootScope.baseUrl = 'https://cabandadan.github.io/re-Live/'; //Application URL
 }]);
 App.config(function ($routeProvider, $socketProvider){
-	$socketProvider.setConnectionUrl('http://chat.systenics.com'); // Socket URL
+	$socketProvider.setConnectionUrl('https://cabandadan.github.io/re-Live/'); // Socket URL
 
 	$routeProvider	// AngularJS Routes
 	.when('/v1/', {
@@ -14,7 +14,7 @@ App.config(function ($routeProvider, $socketProvider){
 		templateUrl: 'app/views/chatRoom.html',
 		controller: 'chatRoomCtrl'
 	})
-	.otherwise({		
+	.otherwise({
         redirectTo: '/v1/'	// Default Route
     });
 });
