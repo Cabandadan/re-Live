@@ -16,7 +16,25 @@
 	<iframe src='https://minnit.chat/reLive?embed&web' width='1000' height='500' style='border:none;' allowTransparency='true'></iframe>
 	<iframe src="https://kiwiirc.com/client/irc.kiwiirc.com/?nick=Member|?&theme=cli#relivechatirc" style="border:0; width:100%; height:450px;"></iframe>
 	<iframe src="http://deadsimplechat.com/+UcU1i" frameborder="0" width="800px" height="600px"></iframe>
+	<!-- Test Code
+	<script>
+	{literal}
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+	{ (i[r].q=i[r].q||[]).push(arguments)}
 
+	,i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	{/literal}
+	{if $current_user.is_logged_in}
+	    ga('create', '{ezini('Google', 'Analytics')}', {ldelim} 'userId': '{$current_user.contentobject_id}' {rdelim});
+	    ga('set', 'dimension1', '{$current_user.contentobject_id}' );
+	{else}
+	    ga('create', '{ezini('Google', 'Analytics')}', 'auto');
+	{/if}
 
+	ga('send', 'pageview');
+	</script>
+	-->
 </head>
 </html>
