@@ -70,6 +70,7 @@ function getRandomName() {
 
 function getRandomColor() {
   return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+  // add a number each time, there is a person a go down the list per user then reset
 }
 
 //------------- DOM STUFF
