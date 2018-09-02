@@ -89,6 +89,64 @@
       -o-transition: opacity .5s .51s ease-in-out;
       transition: opacity .5s .51s ease-in-out;
     }
+    .block:hover .layer {
+      opacity: .5;
+      -webkit-transition: opacity .5s ease-in-out;
+      -moz-transition: opacity .5s ease-in-out;
+      -ms-transition: opacity .5s ease-in-out;
+      -o-transition: opacity .5s ease-in-out;
+      transition: opacity .5s ease-in-out;
+    }
+
+    .img-p {
+      position: absolute;
+      font-size: 16px;
+      opacity: 0;
+      color: #FFF;
+      text-align: left;
+      line-height: 1.6em;
+    }
+
+    .p-container {
+      width: 80%;
+      position: relative;
+      top: 30%;
+      margin-left: 5%;
+    }
+
+    h1 {
+      color: #fff;
+    }
+
+    .image {
+      background-image: url(https://lifepolyphony.files.wordpress.com/2018/07/serial-experiments-lain-wallpapers-26100-3888580.jpg?w=1200);
+      -webkit-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .image.fixed {
+      background-attachment: fixed;
+      background-position: center center;
+      -webkit-background-size: 100% auto;
+      -o-background-size: 100% auto;
+      background-size: 100% auto;
+    }
+
+    .layer {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #000;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+
   </style>
 	<title>「ｒｅ：Ｌｉｖｅ」</title>
 </head>
