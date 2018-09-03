@@ -2,112 +2,62 @@
 <html>
 <head>
   <style>
-  html, body {
+  body{
   min-height:100vh;
-}
-
-body {
   display:flex;
+  justify-content:center;
   align-items:center;
   flex-flow:column nowrap;
-  overflow-x:hidden;
-}
-
-.title {
-  font:1.3em/1 monospace;
+  color:hsla(0,0%,0%,0.4);
   font-variant:small-caps;
-  letter-spacing:0.5em;
-  margin:4em;
 }
 
-.gallery {
-  perspective:700px;
-  width:50vw;
-  display:flex; justify-content:center; align-items:center; flex-flow:row wrap;
-}
-
-ul {
+img.fx {
+  display:block;
   position:relative;
-  width:100px; height:100px;
-  margin:0.1em;
-  perspective-origin:center center;
-  transform-style:preserve-3d;
-  transform:rotateX(40deg);
-  transition:all 0.4s;
+  width:300px;
+  height:200px;
 }
 
-ul:hover {
-  transform:translateZ(100px) rotateX(20deg); z-index:999;
+.fxwrap {
+  position:relative;
+  overflow:hidden;
+  /* width, height, display are copied from <img> by js */
 }
 
-ul:hover li {
-  filter:grayscale(0);
+.fxwrap .fxoverlay {
+  width:100%;
+  height:100%;
+  position:absolute; top:0; left:0; z-index:1;
+  filter:blur(3px) contrast(2) grayscale(1);
+  /*
+       2   +-----+ 3
+       1,5 .     . 4,8
+       6   +-----+ 7
+
+  1>2>3>4=cw
+  5>6>7>8=ccw
+  */
+  clip-path:polygon(
+    0 50%,0 0,100% 0,100% 50%,/*1,2,3,4*/
+    0 50%,0 100%,100% 100%,100% 50%);/*5,6,7,8*/
+  transition:all 0.3s;
 }
 
-li {
-  position:absolute; left:0; top:0;
-  backface-visibility:hidden;
-  width:100%; height:100%;
-  transition:transform 0.3s, filter 1s;
-  background:coral;
-  filter:grayscale(0.9);
+.fxwrap:hover .fxoverlay {
+  /*
+           +-----A
+           .     .
+           B-----+
+
+  transit 1,2,3,4 to A
+  transit 5,6,7,8 to B
+  */
+  clip-path:polygon(
+    100% 0,100% 0,100% 0,100% 0,/*1,2,3,4*/
+    0 100%,0 100%,0 100%,0 100%);/*5,6,7,8*/
 }
-/*
-Setup individual planes final poistion(by left top) and initial position(by transform)
-*/
-li:first-of-type {transform:none;}
-li:nth-of-type(2) {left:100%; transform-origin:left center; transform:rotateY(180deg);}
-li:nth-of-type(3) {top:100%; transform-origin:center top; transform:rotateX(-180deg);}
-li:nth-of-type(4) {left:-100%; transform-origin:right center; transform:rotateY(-180deg);}
-li:nth-of-type(5) {top:-100%; transform-origin:center bottom; transform:rotateX(180deg);}
-li:nth-of-type(6) {top:100%; left:100%; transform-origin:center top; transform:rotateX(-180deg);}
-li:nth-of-type(7) {top:100%; left:-100%; transform-origin:right center; transform:rotateY(-180deg);}
-li:nth-of-type(8) {top:-100%; left:-100%; transform-origin:center bottom; transform:rotateX(180deg);}
-li:nth-of-type(9) {top:-100%; left:100%; transform-origin:left center; transform:rotateY(180deg);}
-/*
-Setup transition-delay, for mouseout state
-*/
-li:nth-of-type(2),li:nth-of-type(3),li:nth-of-type(4),li:nth-of-type(5) {transition-delay:0.03s;}
-li:nth-of-type(6),li:nth-of-type(7),li:nth-of-type(8),li:nth-of-type(9) {transition-delay:0s;}
-ul:hover :nth-of-type(2),ul:hover :nth-of-type(3),ul:hover :nth-of-type(4),ul:hover :nth-of-type(5) {transition-delay:0s}
-ul:hover :nth-of-type(6),ul:hover :nth-of-type(7),ul:hover :nth-of-type(8),ul:hover :nth-of-type(9) {transition-delay:0.2s}
-/*
-Setup planes final state
-*/
-ul:hover :nth-of-type(2),ul:hover :nth-of-type(4),ul:hover :nth-of-type(7),ul:hover :nth-of-type(9) {transform:rotateY(0);}
-ul:hover :nth-of-type(3), ul:hover :nth-of-type(5),ul:hover :nth-of-type(6), ul:hover :nth-of-type(8) {transform:rotateX(0);}
-/*
-Set background position
-*/
-ul li {background-size:300% 300%;}
-li:nth-of-type(1) {background-position:center center;}
-li:nth-of-type(2) {background-position:right center;}
-li:nth-of-type(3) {background-position:center bottom;}
-li:nth-of-type(4) {background-position:left center;}
-li:nth-of-type(5) {background-position:center top;}
-li:nth-of-type(6) {background-position:right bottom;}
-li:nth-of-type(7) {background-position:left bottom;}
-li:nth-of-type(8) {background-position:left top;}
-li:nth-of-type(9) {background-position:right top;}
-/*
-Set background image source
-*/
-ul:nth-of-type(1) li { background-image:url(//picsum.photos/1200/800?image=1011);}
-ul:nth-of-type(1) { width:120px; height:80px; }
-ul:nth-of-type(2) li { background-image:url(//picsum.photos/1424/2136?image=1027);}
-ul:nth-of-type(2) { width:90px; height:130px; }
-ul:nth-of-type(3) li { background-image:url(//picsum.photos/1618/712?image=996);}
-ul:nth-of-type(3) { width:130px; height:90px; }
-ul:nth-of-type(4) li { background-image:url(//picsum.photos/1200/800?image=1005);}
-ul:nth-of-type(4) { width:120px; height:80px; }
-ul:nth-of-type(5) li { background-image:url(//picsum.photos/1042/1356?image=978);}
-ul:nth-of-type(5) { width:64px; height:84px; }
-ul:nth-of-type(6) li { background-image:url(//picsum.photos/1000/666image=943);}
-ul:nth-of-type(6) { width:100px; height:66px; }
-/*
-Hide debug label
-*/
-li { text-indent:999px; overflow:hidden; }
+
 
   </style>
 
@@ -115,79 +65,9 @@ li { text-indent:999px; overflow:hidden; }
 
   <script src="./script.js"></script>
 
-
   <title>「ｒｅ：Ｌｉｖｅ」</title>
 </head>
 <body>
-
-<div class="title">Spread Fx</div>
-<div class="gallery">
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C</li>
-    <li>D</li>
-    <li>E</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-  </ul>
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C</li>
-    <li>D</li>
-    <li>E</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-  </ul>
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C</li>
-    <li>D</li>
-    <li>E</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-  </ul>
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C</li>
-    <li>D</li>
-    <li>E</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-  </ul>
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C</li>
-    <li>D</li>
-    <li>E</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-  </ul>
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C</li>
-    <li>D</li>
-    <li>E</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-  </ul>
-</div>
+<h1>hover effect by clip-path  </h1><img class="fx" src="https://picsum.photos/1200/800?image=853"/>
 </body>
 </html>

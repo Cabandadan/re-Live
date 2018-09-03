@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono";
+  font-size: 50px;
+  padding: 50px 0 0 100px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  font-weight: 700;
+  color: #fff;
+  background-image: radial-gradient(#e85e3c, #7c1717);
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.t3xts {
+  line-height: 1;
+  position: relative;
+  perspective: 1000px;
+  text-transform: uppercase;
+}
+
+.t3xt {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  text-transform: uppercase;
+}
+
+.t3xt-out {
+  animation: text-out 0.5s ease;
+}
+
+.t3xt-in {
+  animation: text-in 0.5s ease;
+}
+
+@keyframes text-out {
+  to {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+}
+@keyframes text-in {
+  from {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+.ref {
+  background-color: #000;
+  border-radius: 3px;
+  padding: 5px 8px;
+  position: absolute;
+  font-size: 16px;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  font-weight: 300;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+.ref::first-letter {
+  font-size: 12px;
+}
+
+  </style>
+
+
+
+  <script src="./script.js"></script>
+
+
+  <title>「ｒｅ：Ｌｉｖｅ」</title>
+</head>
+<body>
+<div class="t3xts t3xt-1">NO!</div>
+<div class="t3xts t3xt-2">THIS IS</div>
+<div class="t3xts t3xt-3">PATRICK!</div><a class="ref" href="https://jouanmarcel.com" target="_blank">🔗 Jouan Marcel</a>
+</body>
+</html>
