@@ -30,7 +30,8 @@
     height:100%;
     grid-column:1/span 1;
 
-    --offsetX:50%;
+    /*--offsetX:10%;*/
+    --offsetX:111%;
   }
 
   a {
@@ -137,6 +138,37 @@
   li:hover img {
     filter:blur(0);
   }
+
+  /* width */
+  ::-webkit-scrollbar {
+      width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #222;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #111;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+  }
+
+  .border {
+
+    border-style:solid;
+    color:white;
+
+  }
+  .margin {
+    margin-right:40px;
+
+  }
   </style>
 
 
@@ -149,11 +181,13 @@
 <body>
 
   <base/>
-  <ul>
-    <li><a href="blog.html"><img src="http://78.media.tumblr.com/5f3cd9de6eee7fab0b9875f936fbe128/tumblr_n2gtxrhrLU1r0ii93o1_500.gif"/></a></li>
+  <div class="border">
+  <ul class="margin">
+    <li><a href="blog.html"><img src="https://78.media.tumblr.com/2e34b1e7d866447086c3d4c50491cd9b/tumblr_p9pzfdBtUF1w0qmx4o1_500.gif"/></a></li>
     <li><a href="info.html"><img src="https://media.giphy.com/media/Q9qWRZr54bYTS/giphy.gif"/></a></li>
     <li><a href="test.html"><img src="https://thumbs.gfycat.com/EqualOblongChrysalis-size_restricted.gif"/></a></li>
-    <li><a href="404.html"><img src="https://media.giphy.com/media/OOCEDoq2sOuWc/giphy.gif"/></a></li>
+    <li><a href="404.html"><img src="https://78.media.tumblr.com/37643ea76f87926c4b608993b60ac592/tumblr_nsbqx3Pe3f1ub5x7oo1_500.gif"/></a></li>
   </ul>
+</div>
 </body>
 </html>
