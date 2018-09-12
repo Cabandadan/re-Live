@@ -23,7 +23,7 @@
     background-image:url(bg/bg_main2.gif);
     background-color:black;
     color:white;
-
+    overflow-x: hidden;
 
     }
 
@@ -363,6 +363,7 @@
    }
 
     body {
+      overflow-x: hidden;
       box-sizing: border-box;
       margin: 0;
       padding: 13px;
@@ -384,7 +385,8 @@
     }
     .messages {
       flex-shrink: 1;
-      overflow: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
     .message {
       padding: 5px 0;
