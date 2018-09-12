@@ -3,403 +3,233 @@
 <head>
   <link rel="icon" type="image/png" href="../images/pupilpng.png" sizes="1000x1000" />
   <style>
-  body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: black;
-      font-size:20px;
-      font-family:Times, "Times New Roman", serif;
-      font-weight:normal;
-      clear:both;
-      letter-spacing: 6px;
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
+  .grid-wrap {
+    padding: 1%;
   }
 
-  nav ul {
-      padding: 0;
-      list-style-type: none;
+  .list-block {
+    float: left;
+    margin: 1%;
+    width: 31.33333%;
+    font-size: 0;
+    overflow: hidden;
+  }
+  .list-block figure {
+    position: relative;
+    display: block;
+    color: black;
+    text-align: center;
+  }
+  .list-block figure:after {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: '';
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    opacity: 0.7;
+    -webkit-transform: skew(-45deg) scaleX(0);
+    -ms-transform: skew(-45deg) scaleX(0);
+    transform: skew(-45deg) scaleX(0);
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .list-block figure:hover:after {
+    -webkit-transform: skew(-45deg) scaleX(1);
+    -ms-transform: skew(-45deg) scaleX(1);
+    transform: skew(-45deg) scaleX(1);
+    -moz-transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .list-block figure:hover figcaption h2,
+  .list-block figure:hover figcaption p {
+    -moz-transform: translate3d(0%, 0%, 0);
+    -webkit-transform: translate3d(0%, 0%, 0);
+    transform: translate3d(0%, 0%, 0);
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+  }
+  .list-block figure:hover figcaption h2 {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+  }
+  .list-block figure:hover figcaption p {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    opacity: 0.7;
+  }
+  .list-block img {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    max-width: 100%;
+    min-width: 100%;
+    -moz-transition: opacity 0.35s ease;
+    -o-transition: opacity 0.35s ease;
+    -webkit-transition: opacity 0.35s ease;
+    transition: opacity 0.35s ease;
+  }
+  .list-block figcaption {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  .list-block h2,
+  .list-block p {
+    margin: 0;
+    width: 100%;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+  .list-block h2 {
+    padding: 0 30px 10px;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 24px;
+  }
+  .list-block p {
+    padding: 0 50px;
+    font-size: 14px;
+    text-transform: uppercase;
   }
 
-  nav li {
-      width: 8em;
-      height: 2em;
-      font-size: 25px;
-      text-align: center;
-      line-height: 2em;
-      font-family: sans-serif;
-      text-transform: capitalize;
-      position: relative;
-      transition: 0.5s;
-      margin: 0.8em;
+  .demo-2 figure figcaption p {
+    margin-top: -45px;
+  }
+  .demo-2 figure:after {
+    -webkit-transform: skew(-45deg) scaleX(0);
+    -ms-transform: skew(-45deg) scaleX(0);
+    transform: skew(-45deg) scaleX(0);
+  }
+  .demo-2 figure:hover:after {
+    -webkit-transform: skew(45deg) scaleX(1);
+    -ms-transform: skew(45deg) scaleX(1);
+    transform: skew(45deg) scaleX(1);
+  }
+  .demo-2 figure:hover figcaption p {
+    margin-top: 0;
   }
 
-  nav li::before,
-  nav li::after {
-      content: '';
-      position: absolute;
-      width: 0.6em;
-      height: 0.6em;
-      background-color: #980301;
-      border-radius: 50%;
-      transition: 0.5s cubic-bezier(0.5, -0.5, 0.25, 1.5);
+  .demo-3 figure figcaption {
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -webkit-transform: translateY(-10%);
+    transform: translateY(-10%);
+  }
+  .demo-3 figure figcaption h2,
+  .demo-3 figure figcaption p {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+  }
+  .demo-3 figure:after {
+    -webkit-transform: skew(0deg) scaleX(1);
+    -ms-transform: skew(0deg) scaleX(1);
+    transform: skew(0deg) scaleX(1);
+  }
+  .demo-3 figure:hover:after {
+    -webkit-transform: skew(45deg) scaleX(0);
+    -ms-transform: skew(45deg) scaleX(0);
+    transform: skew(45deg) scaleX(0);
+  }
+  .demo-3 figure:hover figcaption {
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -webkit-transform: translateY(-10%);
+    transform: translateY(-10%);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+  .demo-3 figure:hover img {
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+  }
+  .demo-3 figure img {
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
 
-  nav li::before {
-      top: calc(50% - 0.6em / 2);
-      left: 0;
-  }
-
-  nav li::after {
-      bottom: calc(50% - 0.6em / 2);
-      right: 0;
-  }
-
-  nav li:hover {
-      color: white;
-  }
-
-  nav li:hover::before,
-  nav li:hover::after {
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-      background-color: #980301;
-  }
-
-  nav li:hover::before {
-      z-index: -1;
-      top: 0;
-  }
-
-  nav li:hover::after {
-      z-index: -2;
-      bottom: -0.4em;
-      right: -0.4em;
-      filter: brightness(0.8);
-  }
-  @charset "UTF-8";
-  /* CSS Document */
-
+  /*----page styles---*/
   * {
-  	margin:0px;
-  	padding:0px;
-  	letter-spacing:8px;
-  	font-smooth: never;
-  	-webkit-font-smoothing: none;
-  	/*-moz-osx-font-smoothing: grayscale;*/
-
-  	}
+    box-sizing: border-box;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+  }
 
   body {
-  	background-image:url(bg/bg_main2.gif);
-  	background-color:black;
-  	color:#980301;
-
-
-  	}
-
-  a {
-  	text-decoration:none;
-
-  	}
-
-
-  #navbar {
-  	background-color:black;
-  	width:800px;
-  	height:auto;
-  	margin-left:auto;
-  	margin-right:auto;
-  	margin-top:40px;
-  	box-shadow:black 0px 5px 10px;
-  	text-align:center;
-  	padding-top:40px;
-
-  	}
-
+    background: black;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, black, black);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, black, black;);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Roboto', sans-serif;
+  }
 
   h1 {
-  	font-size:20px;
-  	font-family:Times, "Times New Roman", serif;
-  	font-weight:normal;
-  	clear:both;
-  	}
-
-  h6 {
-  	font-size:9px;
-
-  	}
-
-  .intro {
-  	font-size:9px;
-
-  	}
-
-  .copy {
-  	font-size:11px;
-
-  	}
-
-  .mail {
-  	font-size:9px;
-
-  	}
-
-  .logo {
-  	margin:20px;
-
-
-  	}
-
-  #navline {
-  	font-size:13px;
-  	letter-spacing:8px;
-  	margin-bottom:20px;
-  	color:black;
-  	}
-
-  .blinkFrame {
-  	display:inline-block;
-  	float:left;
-  	width:400px;
-  	font-weight:bolder;
-
-
-  	}
-
-
-  hr {
-
-  	border-color:#black;
-  	border-bottom-width:2px;
-
-
-
-  	}
-
-  #enterWired {
-  	display:block;
-  	background-image:url(15c.gif);
-  	width:838px;
-  	height:650px;
-  	margin-left:auto;
-  	margin-right:auto;
-  	margin-top:30px;
-
-
-
-  	}
-
-
-  .article {
-  	width:1200px;
-  	background-color:black;
-  	height:auto;
-  	margin-left:auto;
-  	margin-right:auto;
-  	margin-top:40px;
-  	box-shadow:black 0px 5px 10px;
-  	text-align:center;
-  	letter-spacing:8px;
-  	font-size:13px;
-  	padding-top:20px;
-
-
-  	}
-
-  .article p {
-  	margin:20px;
-  	font-size:13px;
-  	}
-
-  .date {
-  	font-size:9px;
-  	line-height:0px;
-  	margin:0px;
-
-  	}
-  .author {
-  	font-size:13px;
-  	line-height:40px;
-  	margin:0px;
-
-  	}
-
-  h5 {
-  	font-weight:normal;
-  	}
-
-  b {
-  	color:#8e717e;
-  	font-weight:normal;
-
-  	}
-
-  #footer {
-  	margin-top:70px;
-  	color:#8e717e;
-  	border:0px;
-  	text-align:center;
-  	letter-spacing:8px;
-  	font-size:9px;
-  	margin-bottom:20px;
-  	}
-
-  #footer span {
-  	background-color:black;
-  	padding:3px;
-
-
-  	}
-
-  #footer a {
-  	text-decoration:underline;
-  	}
-
-
-  #note {
-  	letter-spacing:0px;
-  	}
-
-  .article .comment {
-  	font-size:9px;
-  	}
-
-  .jap {
-  	font-smooth: auto !important;
-  	-webkit-font-smoothing : auto !important;
-
-  	}
-
-  .iconA {
-  	background-image:url(favicon_16px.gif);
-  	background-repeat:no-repeat;
-  	height:16px;
-  	width:16px;
-  	margin-left:auto;
-  	margin-right:auto;
-  	margin-bottom:10px;
-
-  	}
-
-
-
-
-  .del1s {
-  	animation: blink 2s linear infinite;
-  	animation-delay: 0s;
-  	letter-spacing:0px
-
-  	}
-
-  .del1s5ms {
-  	animation: blink 2s linear infinite;
-  	animation-delay: 0.4s;
-  	letter-spacing:0px
-
-  	}
-
-  .del2s {
-  	animation: blink 2s linear infinite;
-  	animation-delay: 0.8s;
-  	letter-spacing:0px
-
-  	}
-
-
-  .del4s {
-  	animation: blink 2s linear infinite;
-  	animation-delay: 1.2s;
-  	letter-spacing:0px
-
-  	}
-
-  .del5s {
-  	animation: blink 2s linear infinite;
-  	animation-delay: 1.6s;
-  	letter-spacing:0px
-
-  	}
-
-  .del6s {
-  	animation: blink 2s linear infinite;
-  	animation-delay: 2s;
-  	letter-spacing:0px
-
-  	}
-
-  .blink {
-    animation: blink 2s linear infinite;
+    color: white;
+    padding: 4%;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+  }
+  h1 small {
+    font-size: 18px;
+    display: block;
+    text-transform: none;
+    font-weight: 300;
+    margin-top: 5px;
   }
 
-  .Bfast {
-  	  animation: blink 2s ease-out infinite;
-
-  	}
-
-  .wiredAnim {
-  		  animation: wiredB 2s ease-in-out infinite;
-  	}
-
-  .wdel1s {
-  	animation: wiredB 2s ease-in-out infinite;
-  	animation-delay: 0.4s;
-  	}
-
-  .wdel2s {
-  	animation: wiredB 2s ease-in-out infinite;
-  	animation-delay: 0.8s;
-  	}
-
-  .wdel3s {
-  	animation: wiredB 2s ease-in-out infinite;
-  	animation-delay: 1.2s;
-  	}
-
-  #fontcolor {
-  	color:white;
+  .made-with-love {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 10px;
+    font-family: arial;
+    clear: left;
+    text-align: center;
+    color: #fff;
   }
-
-  @keyframes blink {
-    50% {
-  	  color:black;
-    }
-   }
-
-   @keyframes wiredB {
-    50% {
-  	  color:#8e717e;
-  	  text-shadow:#8e717e 1px 4px 5px;
-  	  }
-   }
-
-   @keyframes wiredB2 {
-    50% {
-  	  color:#980301;
-  	  text-shadow:#980301 1px 1px 6px;
-  	  }
-   }
-   /* width */
-   ::-webkit-scrollbar {
-       width: 10px;
-   }
-
-   /* Track */
-   ::-webkit-scrollbar-track {
-       background: #222;
-   }
-
-   /* Handle */
-   ::-webkit-scrollbar-thumb {
-       background: #111;
-   }
-
-   /* Handle on hover */
-   ::-webkit-scrollbar-thumb:hover {
-       background: #555;
-   }
+  .made-with-love i {
+    font-style: normal;
+    color: #F50057;
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+  }
+  .made-with-love a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .made-with-love a:hover {
+    text-decoration: underline;
+  }
 
   </style>
 
@@ -411,14 +241,96 @@
   <title>「ｒｅ：Ｌｉｖｅ」</title>
 </head>
 <body>
+  <h1>Thumbnail Hover effects
+    <small>Easily change the grid item per row using by sass variable.</small>
+  </h1>
+  <div class="grid-wrap">
+    <!-- demo 1-->
+    <a class="list-block" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/821414/pexels-photo-821414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 01</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <a class="list-block" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/821414/pexels-photo-821414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 02</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <a class="list-block" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/821414/pexels-photo-821414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 03</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <!-- demo 2-->
+    <a class="list-block demo-2" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 04</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <a class="list-block demo-2" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 05</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <a class="list-block demo-2" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 06</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <!-- demo 3 -->
+    <a class="list-block demo-3" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/821414/pexels-photo-821414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 07</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <a class="list-block demo-3" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/821414/pexels-photo-821414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 08</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+    <a class="list-block demo-3" href="#">
+      <figure>
+        <img src="https://images.pexels.com/photos/821414/pexels-photo-821414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="" />
+        <figcaption>
+          <h2>Thumbnail 09</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </figcaption>
+      </figure>
+    </a>
+   </div>
 
-  <nav>
-    <ul>
-      <li><a href="../" style="color: black">home</a></li>
-      <li><a href="/blog" style="color: black">blog</a></li>
-      <li><a href="/info" style="color: black">info</a></li>
-      <li><a href="/chat" style="color: black">chat</a></li>
-    </ul>
-  </nav>
+
 </body>
 </html>
