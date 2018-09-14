@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="../images/pupilpng.png" sizes="1000x1000" />
+  <style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  :root {
+    /* https://yoksel.github.io/svg-filters */
+    --water-color: (
+      filter: @svg-filter(<svg>
+        <filter
+          x="-20%" y="-20%" width="140%" height="140%"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+          style="colorInterpolationFilters: linearrgb"
+        >
+          <feTurbulence type="turbulence"
+            baseFrequency="0.01 0.05"
+            numOctaves="1"
+            seed="24"
+            stitchTiles="noStitch"
+            result="turbulence" />
+          <feDisplacementMap scale="200"
+            in="SourceGraphic" in2="turbulence"
+            xChannelSelector="G" yChannelSelector="A"
+            result="displacementMap" />
+        </filter>
+      </svg>);
+    );
+  }
+
+  </style>
+
+
+
+  <script src="https://unpkg.com/css-doodle@0.4.9/css-doodle.min.js"></script>
+
+  <css-doodle>
+  :doodle {
+    @grid: 10 / 100vmax;
+    background: #0A0D25;
+    overflow: hidden;
+  }
+
+  :container {
+    transform: scale(2) rotate(-45deg) translate(-10%, -10%);
+    @use: var(--water-color);
+  }
+
+  background: hsla(
+    calc(150 - 3 * @row() * @col()),
+    78%, 98%, @r(.8)
+  );
+
+  --d: @r(360deg);
+  --s: @r(.5, 3);
+
+  transform: scale(var(--s)) rotate(var(--d));
+  animation: r @r(20s, 40s) linear infinite;
+
+  @keyframes r {
+    to {
+      transform: scale(var(--s)) rotate(calc(var(--d) + 1turn));
+    }
+  }
+</css-doodle>
+  <title>「ｒｅ：Ｌｉｖｅ」</title>
+</head>
+<body>
+
+</body>
+</html>
