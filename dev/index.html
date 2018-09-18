@@ -3,13 +3,21 @@
 <head>
   <link rel="icon" type="image/png" href="../images/pupilpng.png" sizes="1000x1000" />
   <style>
+* {
+  padding:0px;
+  letter-spacing:8px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+
+}
+
   html, body {
-    margin: 0;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
   }
 
   :root {
@@ -36,6 +44,61 @@
       </svg>);
     );
   }
+  #container {
+    width:auto;
+    position:relative;
+  }
+  #container2 {
+    width:200px;
+    position:relative;
+    z-index:10;
+  }
+  #container3 {
+    width:500px;
+    position:relative;
+  }
+
+
+  #navbar {
+  	background-color:black;
+  	width:200px;
+  	height:auto;
+  	margin-left:auto;
+  	margin-right:auto;
+  	margin-top:40px;
+  	box-shadow:black 0px 5px 10px;
+  	text-align:center;
+  	padding-top:40px;
+  	}
+
+  .article {
+
+  	background-color:black;
+  	height:auto;
+  	margin-left:auto;
+  	margin-right:auto;
+  	margin-top:40px;
+  	box-shadow:black 0px 5px 10px;
+  	text-align:center;
+  	letter-spacing:8px;
+  	font-size:13px;
+  	padding:10px
+  	}
+
+  .article p {
+  	margin:20px;
+  	font-size:13px;
+  	}
+h1 {
+  color: white;
+	font-family:Times, "Times New Roman", serif;
+	font-weight:normal;
+	clear:both;
+}
+
+p {
+  color:white;
+}
 
   </style>
 
@@ -43,6 +106,10 @@
 
   <script src="https://unpkg.com/css-doodle@0.4.9/css-doodle.min.js"></script>
 
+
+  <title>「ｒｅ：Ｌｉｖｅ」</title>
+</head>
+<body><div id="container">
   <css-doodle>
   :doodle {
     @grid: 10 / 100vmax;
@@ -72,9 +139,48 @@
     }
   }
 </css-doodle>
-  <title>「ｒｅ：Ｌｉｖｅ」</title>
-</head>
-<body>
+<!--
+  </div>
+<div id="container2">
+  <div id="navbar">
+    <h1> re:Live</h1>
+  </div>
+  <br>
+  <div class="article">
+    <p>base text test</p>
+  </div>
+</div>
+<div id="container3">
+    <css-doodle>
+    :doodle {
+      @grid: 10 / 100vmax;
+      background: #0A0D25;
+      overflow: hidden;
+    }
 
+    :container {
+      transform: scale(2) rotate(-45deg) translate(-10%, -10%);
+      @use: var(--water-color);
+    }
+
+    background: hsla(
+      calc(150 - 3 * @row() * @col()),
+      78%, 98%, @r(.8)
+    );
+
+    --d: @r(360deg);
+    --s: @r(.5, 3);
+
+    transform: scale(var(--s)) rotate(var(--d));
+    animation: r @r(20s, 40s) linear infinite;
+
+    @keyframes r {
+      to {
+        transform: scale(var(--s)) rotate(calc(var(--d) + 1turn));
+      }
+    }
+    </css-doodle>
+  </div>
+-->
 </body>
 </html>
