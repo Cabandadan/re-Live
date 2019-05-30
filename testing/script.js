@@ -5,7 +5,7 @@ const CLIENT_ID = 'VKamVauGsWImYXJH';
 const drone = new ScaleDrone(CLIENT_ID, {
   data: { // Will be sent out as clientData via events
     name: getRandomName(),
-    color: getRandomColor(),
+    color: black,
   },
 });
 
@@ -60,11 +60,10 @@ drone.on('error', error => {
 
 function getRandomName() {
   const adjs = ["user", "user", "user", "user", "user", "user", "user"];
-  const nouns = ["unknown", "valid", "created", "alive", "contorted", "present", "distort", "level", "breathing", "sight", "incise", "lower"];
   return (
     adjs[Math.floor(Math.random() * adjs.length)] +
     "-" +
-    nouns[Math.floor(Math.random() * nouns.length)]
+    Math.floor(Math.random() * 0xFFFFFF).toString(16)
   );
 }
 
