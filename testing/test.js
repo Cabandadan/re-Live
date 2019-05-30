@@ -68,7 +68,8 @@ function getRandomName() {
 }
 
 function getRandomColor() {
-  return '#' + "00000";
+  return '#' + "00000
+  ";
   // add a number each time, there is a person a go down the list per user then reset
 }
 
